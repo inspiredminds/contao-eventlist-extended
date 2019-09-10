@@ -1,0 +1,6 @@
+services:
+  InspiredMinds\ContaoEventlistExtendedBundle\EventListener\GetAllEventsListener:
+    public: true
+
+  InspiredMinds\ContaoEventlistExtendedBundle\EventListener\ParseTemplateListener:
+    public: true
