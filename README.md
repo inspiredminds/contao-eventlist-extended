@@ -5,4 +5,17 @@
 Contao Eventlist Extended
 =====================
 
-Contao extension to extend the event list module with some features. Currently it only provides a redirect page option, to override the detail page for events. It also automatically adds a canonical meta tag on the reader page, if it differs from the calendar's actual redirect page.
+Contao extension to extend the event list module with some features. 
+
+### Override redirect page
+
+This enables you to define a redirect page other than the one defined in the calendar of the event. This can be useful in situations where you have just one calendar, but you want to display events of that calendar over multiple domains or languages. 
+
+### Canonical tag
+
+The extension also automatically adds a canonical tag on the event reader page, if the current page is not the one defined in the calendar.
+
+
+## Attributions
+
+Development funded by [Die Heilsarmee in Deutschland K.d.ö.R.](https://www.heilsarmee.de/).
