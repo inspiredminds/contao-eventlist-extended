@@ -4,6 +4,7 @@
     "keywords": ["contao", "calendar", "extended", "event"],
     "type": "contao-bundle",
     "license": "LGPL-3.0-or-later",
+    "homepage": "https://github.com/inspiredminds/contao-eventlist-extended",
     "authors": [
         {
             "name": "Fritz Michael Gschwantner",
