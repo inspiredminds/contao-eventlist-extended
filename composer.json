@@ -15,6 +15,12 @@
         "issues": "https://github.com/inspiredminds/contao-eventlist-extended/issues",
         "source": "https://github.com/inspiredminds/contao-eventlist-extended"
     },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/fritzmg"
+        }
+    ],
     "require": {
         "php": ">=7.1",
         "contao/core-bundle": "^4.4",
