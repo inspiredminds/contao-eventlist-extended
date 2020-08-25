@@ -1,4 +1,3 @@
-[![](https://img.shields.io/maintenance/yes/2019.svg)](https://github.com/inspiredminds/contao-eventlist-extended)
 [![](https://img.shields.io/packagist/v/inspiredminds/contao-eventlist-extended.svg)](https://packagist.org/packages/inspiredminds/contao-eventlist-extended)
 [![](https://img.shields.io/packagist/dt/inspiredminds/contao-eventlist-extended.svg)](https://packagist.org/packages/inspiredminds/contao-eventlist-extended)
 
@@ -15,6 +14,9 @@ This enables you to define a redirect page other than the one defined in the cal
 
 The extension also automatically adds a canonical tag on the event reader page, if the current page is not the one defined in the calendar.
 
+### Skip items
+
+Just like in the news list you are able to define how many events should be skipped for this event list.
 
 ## Attributions
 

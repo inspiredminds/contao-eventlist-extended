@@ -32,6 +32,25 @@ class GetAllEventsListener
             }
         }
 
+        if ((int) $module->skipFirst > 0) {
+            $processed = [];
+            $count = 0;
+
+            foreach ($events as $groupKey => &$groupEvents) {
+                foreach ($groupEvents as $dateKey => $dateEvents) {
+                    foreach ($dateEvents as $event) {
+                        ++$count;
+
+                        if ($count > (int) $module->skipFirst) {
+                            $processed[$groupKey][$dateKey][] = $event;
+                        }
+                    }
+                }
+            }
+
+            $events = $processed;
+        }
+
         return $events;
     }
 }
