@@ -39,6 +39,11 @@ class GetAllEventsListener
             foreach ($events as $groupKey => &$groupEvents) {
                 foreach ($groupEvents as $dateKey => $dateEvents) {
                     foreach ($dateEvents as $event) {
+                        // Skip any events outside the scope
+                        if ((int) $event['begin'] < $start || (int) $event['end'] > $end) {
+                            continue;
+                        }
+
                         ++$count;
 
                         if ($count > (int) $module->skipFirst) {
