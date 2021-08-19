@@ -50,7 +50,7 @@ class GetAllEventsListener
         }
     }
 
-    private function applySkipFirst(array &$events,  int $start, int $end, Module $module): void
+    private function applySkipFirst(array &$events, int $start, int $end, Module $module): void
     {
         if ((int) $module->skipFirst <= 0) {
             return;
@@ -99,7 +99,7 @@ class GetAllEventsListener
                     ++$count;
                     $countAscending = $count;
                     $countDescending = $total - ($count - 1);
-                    $event['countNumber'] = $module->cal_order === 'descending' ? $countDescending : $countAscending;
+                    $event['countNumber'] = 'descending' === $module->cal_order ? $countDescending : $countAscending;
                     $event['countAscending'] = $countAscending;
                     $event['countDescending'] = $countDescending;
                     $event['countTotal'] = $total;
