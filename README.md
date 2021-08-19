@@ -18,6 +18,15 @@ The extension also automatically adds a canonical tag on the event reader page, 
 
 Just like in the news list you are able to define how many events should be skipped for this event list.
 
+### Counts
+
+The following template variables will be available:
+
+* `countNumber`: The number of the current event (always starts at 1).
+* `countAscending`: The ascending number of the current event (next event is first).
+* `countDescending`: The descending number of the current event (next event is last).
+* `countTotal`: The total number of available events for this list module.
+
 ## Attributions
 
 Development funded by [Die Heilsarmee in Deutschland K.d.ö.R.](https://www.heilsarmee.de/).
