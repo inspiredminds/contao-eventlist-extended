@@ -59,8 +59,21 @@ class GetAllEventsListener
         $processed = [];
         $count = 0;
 
+        // If sort order is descending, we need to reverse the arrays
+        if ('descending' === $module->cal_order) {
+            $events = array_reverse($events, true);
+        }
+
         foreach ($events as $groupKey => $groupEvents) {
+            if ('descending' === $module->cal_order) {
+                $groupEvents = array_reverse($groupEvents, true);
+            }
+
             foreach ($groupEvents as $dateKey => $dateEvents) {
+                if ('descending' === $module->cal_order) {
+                    $dateEvents = array_reverse($dateEvents);
+                }
+
                 foreach ($dateEvents as $event) {
                     // Skip any events outside the scope
                     if ((int) $event['begin'] < $start || (int) $event['end'] > $end) {
@@ -72,6 +85,19 @@ class GetAllEventsListener
                     if ($count > (int) $module->skipFirst) {
                         $processed[$groupKey][$dateKey][] = $event;
                     }
+                }
+            }
+        }
+
+        // Reverse arrays back again
+        if ('descending' === $module->cal_order) {
+            $processed = array_reverse($processed, true);
+
+            foreach ($processed as &$groupEvents) {
+                $groupEvents = array_reverse($groupEvents, true);
+
+                foreach ($groupEvents as &$dateEvents) {
+                    $dateEvents = array_reverse($dateEvents);
                 }
             }
         }
