@@ -109,8 +109,8 @@ class GetAllEventsListener
     {
         $total = 0;
 
-        foreach ($events as $groupKey => &$groupEvents) {
-            foreach ($groupEvents as $dateKey => &$dateEvents) {
+        foreach ($events as &$groupEvents) {
+            foreach ($groupEvents as &$dateEvents) {
                 foreach ($dateEvents as &$event) {
                     ++$total;
                 }
@@ -119,8 +119,8 @@ class GetAllEventsListener
 
         $count = 0;
 
-        foreach ($events as $groupKey => &$groupEvents) {
-            foreach ($groupEvents as $dateKey => &$dateEvents) {
+        foreach ($events as &$groupEvents) {
+            foreach ($groupEvents as &$dateEvents) {
                 foreach ($dateEvents as &$event) {
                     ++$count;
                     $countAscending = $count;
