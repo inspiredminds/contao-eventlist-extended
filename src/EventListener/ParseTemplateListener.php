@@ -23,7 +23,7 @@ class ParseTemplateListener
 {
     public function onParseTemplate(Template $template): void
     {
-        if (null !== $template->type && 0 === stripos($template->type, 'eventreader')) {
+        if (null !== $template->type && 0 === stripos((string) $template->type, 'eventreader')) {
             if (null !== ($event = CalendarEventsModel::findPublishedByParentAndIdOrAlias(Input::get('events', false, true), $template->cal_calendar))) {
                 /** @var CalendarModel $calendar */
                 $calendar = $event->getRelated('pid');
