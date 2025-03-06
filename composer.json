@@ -22,12 +22,12 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
-        "contao/core-bundle": "^4.4",
-        "contao/calendar-bundle": "^4.4",
-        "symfony/config": "^3.2 || ^4.0 || ^5.1",
-        "symfony/dependency-injection": "^3.2 || ^4.0 || ^5.1",
-        "symfony/http-kernel": "^3.2 || ^4.0 || ^5.1"
+        "php": ">=8.1",
+        "contao/core-bundle": "^4.13 || ^5.3",
+        "contao/calendar-bundle": "^4.13 || ^5.3",
+        "symfony/config": "^5.4 || ^6.4 || ^7.1",
+        "symfony/dependency-injection": "^5.4 || ^6.4 || ^7.1",
+        "symfony/http-kernel": "^5.4 || ^6.4 || ^7.1"
     },
     "autoload": {
         "psr-4": {
@@ -35,6 +35,17 @@
         }
     },
     "extra": {
-        "contao-manager-plugin": "InspiredMinds\\ContaoEventlistExtendedBundle\\ContaoManagerPlugin"
+        "contao-manager-plugin": "InspiredMinds\\ContaoEventlistExtendedBundle\\ContaoManager\\Plugin"
+    },
+    "require-dev": {
+        "contao/easy-coding-standard": "^6.0",
+        "contao/rector": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "php-http/discovery": false,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

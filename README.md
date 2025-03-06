@@ -27,6 +27,10 @@ The following template variables will be available:
 * `countDescending`: The descending number of the current event (next event is last).
 * `countTotal`: The total number of available events for this list module.
 
+### Skip current event
+
+If an event list is shown together with an event reader, then this setting will exclude the current event from the list.
+
 ## Attributions
 
 Development funded by [Die Heilsarmee in Deutschland K.d.ö.R.](https://www.heilsarmee.de/).

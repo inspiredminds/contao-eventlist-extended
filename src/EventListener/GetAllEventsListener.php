@@ -3,23 +3,25 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the ContaoEventlistExtendedBundle.
- *
- * (c) inspiredminds
- *
- * @license LGPL-3.0-or-later
+ * (c) INSPIRED MINDS
  */
 
 namespace InspiredMinds\ContaoEventlistExtendedBundle\EventListener;
 
+use Contao\CalendarEventsModel;
 use Contao\Config;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
+use Contao\Input;
 use Contao\Module;
 use Contao\PageModel;
+use Contao\StringUtil;
 
+#[AsHook('getAllEvents')]
 class GetAllEventsListener
 {
     public function onGetAllEvents(array $events, array $calendars, int $start, int $end, Module $module): array
     {
+        $this->applySkipCurrent($events, $module);
         $this->applySkipFirst($events, $start, $end, $module);
         $this->overrideJumpTo($events, $module);
         $this->addCounts($events, $module);
@@ -33,7 +35,7 @@ class GetAllEventsListener
             return;
         }
 
-        $jumpTo = PageModel::findByPk($module->jumpTo);
+        $jumpTo = PageModel::findById($module->jumpTo);
 
         if (null === $jumpTo) {
             return;
@@ -44,6 +46,32 @@ class GetAllEventsListener
                 foreach ($eventsOnThatDay as &$event) {
                     if (empty($event['source']) || 'default' === $event['source']) {
                         $event['href'] = ampersand($jumpTo->getFrontendUrl((Config::get('useAutoItem') ? '/' : '/events/').($event['alias'] ?: $event['id'])));
+                    }
+                }
+            }
+        }
+    }
+
+    private function applySkipCurrent(array &$events, Module $module): void
+    {
+        if (!$module->cal_skipCurrent) {
+            return;
+        }
+
+        $calendarIds = array_map('intval', StringUtil::deserialize($module->cal_calendar, true));
+        $current = CalendarEventsModel::findPublishedByParentAndIdOrAlias(Input::get('auto_item', false, true), $calendarIds);
+
+        if (!$current) {
+            return;
+        }
+
+        foreach ($events as $a => $aa) {
+            foreach ($aa as $b => $bb) {
+                foreach ($bb as $c => $event) {
+                    if ((int) $current->id === (int) $event['id']) {
+                        unset($events[$a][$b][$c]);
+
+                        return;
                     }
                 }
             }
