@@ -45,7 +45,7 @@ class GetAllEventsListener
             foreach ($eventsPerDay as &$eventsOnThatDay) {
                 foreach ($eventsOnThatDay as &$event) {
                     if (empty($event['source']) || 'default' === $event['source']) {
-                        $event['href'] = StringUtil::ampersand($jumpTo->getFrontendUrl((Config::get('useAutoItem') !== false ? '/' : '/events/').($event['alias'] ?: $event['id'])));
+                        $event['href'] = StringUtil::ampersand($jumpTo->getFrontendUrl((false !== Config::get('useAutoItem') ? '/' : '/events/').($event['alias'] ?: $event['id'])));
                     }
                 }
             }

@@ -27,7 +27,8 @@
         "contao/calendar-bundle": "^4.13 || ^5.3",
         "symfony/config": "^5.4 || ^6.4 || ^7.1",
         "symfony/dependency-injection": "^5.4 || ^6.4 || ^7.1",
-        "symfony/http-kernel": "^5.4 || ^6.4 || ^7.1"
+        "symfony/http-kernel": "^5.4 || ^6.4 || ^7.1",
+        "composer/semver": "^3.4"
     },
     "autoload": {
         "psr-4": {
